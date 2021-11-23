@@ -1,4 +1,94 @@
 
+	setTimeout(()=>{
+		
+		$("#msgEditado").css({
+			"display":"none"
+		})
+		
+		$("#msgErro").css({
+			"display":"none"
+		})
+		
+		$("#msgExcluido").css({
+			"display":"none"
+		})
+		
+		$("#msgCadastrado").css({
+			"display":"none"
+		})
+		
+	}, 5000)
+	
+	
+	// faz clicar no botao que chama um servlet que reinicia as variaveis de
+	// pessoa.
+	$(".btn-close").click(()=>{
+		
+		if($("#reinicia").val() == "sim"){
+			$("#reiniciaVariaveis").click();	
+		}
+		
+		 $("#erroNomeCadastro").css({
+             "display": "none"
+         })
+
+		$("#erroNomeEdicao").css({
+             "display": "none"
+         })
+
+		$("#erroCpfCadastro").css({
+             "display": "none"
+         })	
+
+		$("#erroCpfEdicao").css({
+             "display": "none"
+         })	
+
+		$("#erroEmailCadastro").css({
+             "display": "none"
+        })
+
+		$("#erroEmailEdicao").css({
+             "display": "none"
+        })
+
+		$("#erroEmailConfirmCadastro").css({
+              "display": "none"
+        })
+
+		$("#erroEmailConfirmEdicao").css({
+              "display": "none"
+        })
+
+		$("#nomeCadastro").val("");
+		$("#nomeEdicao").val("");
+		$("#cpfCadastro").val("");
+		$("#cpfEdicao").val("");
+		$("#emailCadastro").val("");
+		$("#emailEdicao").val("");
+		$("#emailConfirmCadastro").val("");
+		$("#emailConfirmEdicao").val("");
+	})
+	
+	///////////////////////////////////
+
+	// verifica se teve uma edicao ou algum cadastro 
+	// que não obteve exito
+	function verifica(){
+		let pc = $("#pc");
+	
+		if(pc.val() == "simC"){
+			$('#abrirModalCadastro').click();
+		}
+		
+		let pe = $("#pe");
+		
+		if(pe.val() == "simE"){
+			$('#abrirModalEditar').click();
+		}	
+	}
+	/////////////////////////////////////
+	
 	// tratando nome cadastro
 	$("#nomeCadastro").change(()=>{
 	

@@ -50,7 +50,7 @@ public class PPessoa {
 				if (emailExist(p, "s")) {
 					
 					emailExist = true;
-				
+					
 					p.setEmail("");
 					
 					retorno = false;
@@ -124,7 +124,7 @@ public class PPessoa {
 				
 				crit = conn.sessao.createCriteria(Pessoa.class);
 				
-				crit.add(Restrictions.like("nome", p.getNome() + "%"));
+				crit.add(Restrictions.like("nome", "%" + p.getNome() + "%"));
 				crit.addOrder(Order.asc("id"));
 				
 				lista = (ArrayList<Pessoa>) crit.list();
@@ -242,16 +242,6 @@ public class PPessoa {
 		
 		return retorno;
 		
-		// cria a variavel boolean
-		// abre conexao
-		// abre um try
-		// verifica se o cpf é valido
-		// verifica se email é valido
-		// se for, edita
-		// se não, joga mensagem de erro
-		// fecha catch, hibernate exception
-		// fecha conexao
-		// retorna a variavel boolean.
 	}
 	
 	public boolean deletar(Pessoa p) {
@@ -515,5 +505,55 @@ public class PPessoa {
 		}
 		
 		return retorno;
+	}
+
+	public boolean listarPessoas(Pessoa p) {
+		
+		ArrayList<Pessoa> lista = new ArrayList<Pessoa>();
+		
+		Conexao conn = new Conexao();
+	
+		boolean retorno = true;
+		
+		if (!conn.conectar()) {
+			
+			p.msg = conn.msg;
+			retorno = false;
+			
+		} else {
+			
+			try {
+				
+				crit = conn.sessao.createCriteria(Pessoa.class);
+				
+				crit.addOrder(Order.asc("id"));
+				
+				lista = (ArrayList<Pessoa>) crit.list();
+				
+				try {
+					p.setListaPessoas(lista);
+				} catch (IndexOutOfBoundsException e) {
+					retorno = false;
+				}
+			
+				
+			} catch (HibernateException e) {
+				
+				p.msg = "Erro ao listar pessoas: " + e.toString();
+				retorno = false;
+			
+			}
+		}
+	
+		
+		if (!conn.fechar()) {
+			
+			p.msg = conn.msg;
+			retorno = false;
+			
+		}
+		
+		return retorno;
+		
 	}
 }

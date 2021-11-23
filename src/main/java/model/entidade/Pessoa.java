@@ -45,11 +45,20 @@ public class Pessoa {
 		
 	}
 	
+	public Pessoa(long id) {
+		this.id = id;
+	}
 	
 	public Pessoa(String nome) {
 		this.nome = nome;
 	}
 
+	public Pessoa(long id, String nome, String cpf, String email) {
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.email = email;
+	}
 
 	public Pessoa(String nome, String cpf, String email) {
 		this.nome = nome;
@@ -84,6 +93,11 @@ public class Pessoa {
 	public boolean deletar() {
 		PPessoa pp = new PPessoa();
 		return pp.deletar(this);
+	}
+	
+	public boolean listarPessoas() {
+		PPessoa pp = new PPessoa();
+		return pp.listarPessoas(this);
 	}
 	
 
