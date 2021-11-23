@@ -37,17 +37,21 @@ public class PPessoa {
 				
 				boolean emailExist = false;
 				
-				if (cpfExist(p)) {
+				if (cpfExist(p, "s")) {
 					
 					cpfExist = true;
-								
+					
+					p.setCpf("");
+					
 					retorno = false;
 					
 				}
 				
-				if (emailExist(p)) {
+				if (emailExist(p, "s")) {
 					
 					emailExist = true;
+				
+					p.setEmail("");
 					
 					retorno = false;
 					
@@ -98,17 +102,7 @@ public class PPessoa {
 		}
 		
 		return retorno;
-		
-		// cria a variavel boolean
-		// abre conexao
-		// abre um try
-		// verifica se cpf é valido
-		// verifica se email é valido
-		// se for, cadastra
-		// se não, joga mensagem de erro
-		// fecha catch, hibernate exception
-		// fecha conexao
-		// retorna a variavel boolean.
+				
 	}
 	
 	public boolean localizar(Pessoa p) {
@@ -160,18 +154,6 @@ public class PPessoa {
 		
 		return retorno;
 		
-		// cria a variavel boolean
-		// cria um array de Pessoa
-		// abre conexao
-		// abre um try
-		// cria uma criteria de busca pelo nome
-		// pega o array e recebe o resultado da criteria
-		// abre um try
-		// pega a lista de pessoas do objeto e faz um set do array criado
-		// fecha catch, index outofboundexception
-		// fecha catch, hibernate exception
-		// fecha conexao
-		// retorna a variavel boolean.
 	}
 	
 	public boolean editar(Pessoa p) {
@@ -194,17 +176,21 @@ public class PPessoa {
 				
 				boolean emailExist = false;
 				
-				if (cpfExist(p, "s")) {
+				if (cpfExist(p)) {
 					
 					cpfExist = true;
+					
+					p.setCpf("");
 								
 					retorno = false;
 					
 				}
 				
-				if (emailExist(p, "s")) {
+				if (emailExist(p)) {
 					
 					emailExist = true;
+					
+					p.setEmail("");
 					
 					retorno = false;
 					
@@ -313,14 +299,6 @@ public class PPessoa {
 		}
 		
 		return retorno;
-		
-		// cria a variavel boolean
-		// abre conexao
-		// abre um try
-		// exclui
-		// fecha catch, hibernate exception
-		// fecha conexao
-		// retorna a variavel boolean.
 	
 	}
 	

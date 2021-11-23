@@ -46,6 +46,26 @@ public class Pessoa {
 	}
 	
 	
+	public Pessoa(String nome) {
+		this.nome = nome;
+	}
+
+
+	public Pessoa(String nome, String cpf, String email) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.email = email;
+	}
+
+
+	public Pessoa(String nome, String cpf, String email, List<Pessoa> listaPessoas) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.email = email;
+		this.listaPessoas = listaPessoas;
+	}
+
+
 	public boolean cadastrar() {
 		PPessoa pp = new PPessoa();
 		return pp.cadastrar(this);
