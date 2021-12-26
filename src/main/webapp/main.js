@@ -315,7 +315,7 @@
 
 
 
-	// funcao usada para levar o id ate o formulario de edição
+	// funcao usada para levar o id da tabela ate o formulario de edição
 	function pegarIdEditar(id) {
 			
 	    $("#formularioEditar").find("#id").val(id);
